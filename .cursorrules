@@ -1,0 +1,48 @@
+You are assisting with an Elixir project. Follow these guidelines:
+
+TECH STACK
+- Elixir
+- Owl
+CODE STYLE
+- Use 2-space indentation
+- Maximum line length of 98 characters
+- Use snake_case for function and variable names
+- Use PascalCase for module names
+- Prefer pipe operator |> when transforming data
+- Use parentheses for function calls, especially in pipes
+- Add @moduledoc and @doc documentation strings
+
+TESTING
+- Write ExUnit tests for all public functions
+- Use descriptive test names that explain the behavior
+- Follow arrange-act-assert pattern in tests
+- Test both success and error cases
+- Use setup blocks for common test data
+
+ARCHITECTURE
+- Follow functional programming principles
+- Use pattern matching over conditional logic
+- Leverage GenServer for stateful processes
+- Use Supervisor trees for fault tolerance
+- Keep modules focused and small (< 300 lines)
+- Separate business logic from side effects
+
+NAMING CONVENTIONS
+- Contexts: plural nouns (Accounts, Orders)
+- Schemas: singular nouns (User, Order)
+- Controllers: plural + Controller (UsersController)
+- Live Views: plural + Live (UsersLive)
+
+ERROR HANDLING
+- Use {:ok, result} | {:error, reason} tuples
+- Avoid raising exceptions for expected errors
+- Include detailed error messages
+- Log errors appropriately
+
+PERFORMANCE
+- Use Stream for large collections
+- Avoid String concatenation in loops
+- Leverage ETS for caching when appropriate
+- Be mindful of process mailbox sizes
+
+Include types using @type and @spec where beneficial for complex functions
