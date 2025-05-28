@@ -1,6 +1,10 @@
 # Shredder
 
-Shredder is an Elixir library that provides a robust and flexible command-line argument parser. It supports POSIX-style flags, commands with subcommands, flag validation, dependencies, and conflicts resolution.
+Shredder is an Elixir library designed to be integrated into your Elixir projects to quickly add powerful command-line interfaces. It provides a robust and flexible argument parser that handles POSIX-style flags, commands with subcommands, flag validation, dependencies, and conflict resolution.
+
+## Purpose
+
+Transform your Elixir applications into command-line tools by simply defining commands and flags. Shredder handles all the parsing, validation, and error reporting, allowing you to focus on your application's core functionality.
 
 ## Features
 
@@ -26,9 +30,11 @@ def deps do
 end
 ```
 
-## Usage
+## Quick Start
 
-### Basic Example
+### Integration Example
+
+Create a CLI module in your existing Elixir project:
 
 ```elixir
 defmodule MyApp.CLI do
@@ -71,6 +77,15 @@ defmodule MyApp.CLI do
         {:error, "Invalid flags provided"}
     end
   end
+end
+```
+
+Then call your CLI from an escript or Mix task:
+
+```elixir
+# In your escript main/1 function or Mix task
+def main(args) do
+  MyApp.CLI.main(args)
 end
 ```
 

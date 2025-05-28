@@ -3,7 +3,7 @@ defmodule Shredder.FlagTest do
   alias Shredder.Flag
 
   test "converts strings to atoms" do
-    expected_flag = %Shredder.Flag{
+    expected_flag = %Flag{
       name: :file,
       alias: :f,
       description: "input file path",
@@ -17,11 +17,11 @@ defmodule Shredder.FlagTest do
       position: nil
     }
 
-    assert Shredder.Flag.new("file", alias: "f", description: "input file path", type: :string) == expected_flag
+    assert Flag.new("file", alias: "f", description: "input file path", type: :string) == expected_flag
   end
 
   test "can create a new flag" do
-    expected_flag = %Shredder.Flag{
+    expected_flag = %Flag{
       name: :file,
       alias: :f,
       description: "input file path",
@@ -35,11 +35,11 @@ defmodule Shredder.FlagTest do
       position: nil
     }
 
-    assert Shredder.Flag.new(:file, alias: :f, description: "input file path", type: :string) == expected_flag
+    assert Flag.new(:file, alias: :f, description: "input file path", type: :string) == expected_flag
   end
 
   test "can create a boolean flag" do
-    expected_flag = %Shredder.Flag{
+    expected_flag = %Flag{
       name: :case,
       alias: :c,
       description: "case sensitive",
@@ -53,14 +53,14 @@ defmodule Shredder.FlagTest do
       position: nil
     }
 
-    assert Shredder.Flag.new(:case, alias: :c, description: "case sensitive", type: :boolean) == expected_flag
+    assert Flag.new(:case, alias: :c, description: "case sensitive", type: :boolean) == expected_flag
   end
 
   test "handles position in flag creation" do
-    flag = Shredder.Flag.new(:file, position: 1)
+    flag = Flag.new(:file, position: 1)
     assert flag.position == 1
 
-    flag_no_pos = Shredder.Flag.new(:file)
+    flag_no_pos = Flag.new(:file)
     assert flag_no_pos.position == nil
   end
 

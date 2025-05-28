@@ -14,7 +14,6 @@ defmodule Shredder do
   """
 
   alias Shredder.Command
-  alias Shredder.Flag
   alias Shredder.Args.Parser
   alias Shredder.Args.Validator
   alias Shredder.UI.Print

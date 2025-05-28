@@ -4,12 +4,12 @@ defmodule Shredder.CommandTest do
   alias Shredder.Flag
 
   test "creates a new command" do
-    f = fn _ -> end
+    f = fn _ -> :ok end
     assert Command.new("run", description: "runs the script", handler: f) == %Command{name: :run, description: "runs the script", handler: f}
   end
 
   test "creates a command with flags" do
-    f = fn _ -> end
+    f = fn _ -> :ok end
     flags = [Flag.new("flag", alias: "f", description: "the flag")]
     assert Command.new("run", description: "runs the script", handler: f, flags: flags) == %Command{
       name: :run,
@@ -20,7 +20,7 @@ defmodule Shredder.CommandTest do
   end
 
   test "creates a command with subcommands" do
-    f = fn _ -> end
+    f = fn _ -> :ok end
     subcommands = [Command.new("subcommand", description: "the subcommand", parent: :run)]
     assert Command.new("run", description: "runs the script", handler: f, subcommands: subcommands) == %Command{
       name: :run,
@@ -44,6 +44,16 @@ defmodule Shredder.CommandTest do
     invalid_flags = %{_valid?: false, errors: ["Invalid flags"]}
 
     assert Command.dispatch(command, invalid_flags) == {:error, ["Invalid flags"]}
+  end
+
+  test "can use an atom as the command name" do
+    handler = fn flags -> {:ok, flags} end
+    command = Command.new(:run, handler: handler)
+    assert command.name == :run
+  end
+
+  test "create a default command" do
+    assert Command.new(:default, handler: fn _ -> :ok end).name == :default
   end
 
 end
